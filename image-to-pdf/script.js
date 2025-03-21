@@ -154,7 +154,7 @@ async function renderPdfPreview(pdfBlob) {
   // Render each page
   for (let i = 1; i <= pdf.numPages; i++) {
     const page = await pdf.getPage(i);
-    const viewport = page.getViewport({ scale: 1.7 });
+    const viewport = page.getViewport({ scale: 1.1 });
     const canvas = document.createElement("canvas");
     const context = canvas.getContext("2d");
     canvas.width = viewport.width;
