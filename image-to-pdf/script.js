@@ -10,6 +10,7 @@ const pdfPreview = document.getElementById("pdf-preview");
 const pdfCanvas = document.getElementById("pdf-canvas");
 const downloadPdfButton = document.getElementById("download-pdf");
 const closePreviewButton = document.getElementById("close-preview");
+const nav = document.getElementById("nav-Id");
 
 let images = [];
 let pdfBlob = null;
@@ -212,6 +213,7 @@ generatePdfButton.addEventListener("click", async () => {
   // Show PDF preview
   pdfPreview.innerHTML = ""; // Clear previous preview
   await renderPdfPreview(pdfBlob);
+  nav.classList.add("hidden");
   pdfPreviewModal.classList.remove("hidden");
 });
 
@@ -222,10 +224,12 @@ downloadPdfButton.addEventListener("click", () => {
   link.href = URL.createObjectURL(pdfBlob);
   link.download = "combined.pdf";
   link.click();
+  nav.classList.remove("hidden");
   pdfPreviewModal.classList.add("hidden");
 });
 
 // Close preview modal
 closePreviewButton.addEventListener("click", () => {
+  nav.classList.remove("hidden");
   pdfPreviewModal.classList.add("hidden");
 });
