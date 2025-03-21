@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image to PDF Converter</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.14.0/Sortable.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf.min.js"></script>
+  </head>
+
+  <body>
+    <!-- Sticky Navbar -->
+    <nav class="bg-gray-800 p-4 sticky top-0 z-50">
+      <div class="container mx-auto flex justify-between items-center">
+        <!-- Logo -->
+        <a href="../index.html" class="text-white text-2xl font-bold">Tecsha</a>
+
+        <!-- Hamburger Menu for Mobile -->
+        <div class="md:hidden">
+          <button id="mobile-menu-button" class="text-white focus:outline-none">
+            <svg
+              class="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16m-7 6h7"
+              ></path>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Navbar Links -->
+        <ul id="navbar-menu" class="hidden md:flex space-x-6">
+          <li>
+            <a
+              href="../index.html"
+              class="text-white hover:text-orange-400 transition duration-300"
+              >Home</a
+            >
+          </li>
+          <li>
+            <a
+              href="#"
+              class="text-white hover:text-orange-400 transition duration-300"
+              >About</a
+            >
+          </li>
+          <li>
+            <a
+              href="#"
+              class="text-white hover:text-orange-400 transition duration-300"
+              >Services</a
+            >
+          </li>
+          <li>
+            <a
+              href="#"
+              class="text-white hover:text-orange-400 transition duration-300"
+              >Contact</a
+            >
+          </li>
+          <li>
+            <a
+              href="#"
+              class="bg-orange-500 text-white px-4 py-2 rounded hover:bg-orange-600 transition duration-300"
+              >Sign Up</a
+            >
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Mobile Menu (Hidden by default) -->
+    <div id="mobile-menu" class="md:hidden hidden bg-gray-700">
+      <ul class="flex flex-col space-y-4 p-4">
+        <li>
+          <a
+            href="#"
+            class="text-white hover:text-orange-400 transition duration-300"
+            >Home</a
+          >
+        </li>
+        <li>
+          <a
+            href="#"
+            class="text-white hover:text-orange-400 transition duration-300"
+            >About</a
+          >
+        </li>
+        <li>
+          <a
+            href="#"
+            class="text-white hover:text-orange-400 transition duration-300"
+            >Services</a
+          >
+        </li>
+        <li>
+          <a
+            href="#"
+            class="text-white hover:text-orange-400 transition duration-300"
+            >Contact</a
+          >
+        </li>
+        <li>
+          <a
+            href="#"
+            class="bg-orange-500 text-white px-4 py-2 rounded hover:bg-orange-600 transition duration-300 text-center"
+            >Sign Up</a
+          >
+        </li>
+      </ul>
+    </div>
+    <div class="bg-gray-100 flex items-center justify-center min-h-screen">
+      <div
+        class="bg-white p-8 rounded-lg shadow-lg max-w-md w-full text-center"
+      >
+        <h1 class="text-2xl font-bold mb-6 text-gray-800">
+          Images to PDF Converter
+        </h1>
+        <div
+          id="drop-zone"
+          class="border-2 border-dashed border-gray-400 p-6 rounded-lg cursor-pointer hover:border-blue-500 transition-colors"
+        >
+          <p class="text-gray-600">
+            Drag and drop images here or click to upload
+          </p>
+          <input
+            type="file"
+            id="file-input"
+            multiple
+            accept="image/*"
+            class="hidden"
+          />
+        </div>
+        <div
+          id="image-container"
+          class="flex flex-col gap-4 justify-center my-6"
+        ></div>
+        <div class="mb-4">
+          <label for="margin" class="block text-sm font-medium text-gray-700"
+            >PDF Margin (in pixels)</label
+          >
+          <div class="flex items-center gap-2">
+            <input
+              type="range"
+              id="margin"
+              min="0"
+              max="100"
+              value="20"
+              class="mt-1 flex-1"
+            />
+            <span id="margin-value" class="text-sm font-bold text-gray-600"
+              >20</span
+            >
+          </div>
+        </div>
+        <button
+          id="generate-pdf"
+          class="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600 transition-colors"
+        >
+          Generate PDF
+        </button>
+      </div>
+
+      <!-- Full-Page PDF Preview Modal -->
+      <div
+        id="pdf-preview-modal"
+        class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center p-6"
+      >
+        <div class="bg-white rounded-lg p-6 w-full h-full flex flex-col">
+          <h2 class="text-xl font-bold mb-4">PDF Preview</h2>
+          <div
+            id="pdf-preview"
+            class="w-full flex-1 overflow-auto border border-gray-300"
+          >
+            <canvas id="pdf-canvas"></canvas>
+          </div>
+          <div class="mt-4 flex justify-end gap-2">
+            <button
+              id="download-pdf"
+              class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600"
+            >
+              Download
+            </button>
+            <button
+              id="close-preview"
+              class="bg-gray-500 text-white px-4 py-2 rounded-lg hover:bg-gray-600"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.14.0/Sortable.min.js"></script>
+    <script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

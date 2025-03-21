@@ -1,0 +1,8 @@
+/* Custom styles for drag-and-drop */
+.drop-zone {
+  transition: border-color 0.3s ease;
+}
+
+.drop-zone.drag-over {
+  border-color: #3b82f6;
+}

@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tools</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-100">
+    <!-- Sticky Navbar -->
+    <nav class="bg-gray-800 p-4 sticky top-0 z-50">
+      <div class="container mx-auto flex justify-between items-center">
+        <!-- Logo -->
+        <a href="#" class="text-white text-2xl font-bold">Tecsha</a>
+
+        <!-- Hamburger Menu for Mobile -->
+        <div class="md:hidden">
+          <button id="mobile-menu-button" class="text-white focus:outline-none">
+            <svg
+              class="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16m-7 6h7"
+              ></path>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Navbar Links -->
+        <ul id="navbar-menu" class="hidden md:flex space-x-6">
+          <li>
+            <a
+              href="#"
+              class="text-white hover:text-orange-400 transition duration-300"
+              >Home</a
+            >
+          </li>
+          <li>
+            <a
+              href="#"
+              class="text-white hover:text-orange-400 transition duration-300"
+              >About</a
+            >
+          </li>
+          <li>
+            <a
+              href="#"
+              class="text-white hover:text-orange-400 transition duration-300"
+              >Services</a
+            >
+          </li>
+          <li>
+            <a
+              href="#"
+              class="text-white hover:text-orange-400 transition duration-300"
+              >Contact</a
+            >
+          </li>
+          <li>
+            <a
+              href="#"
+              class="bg-orange-500 text-white px-4 py-2 rounded hover:bg-orange-600 transition duration-300"
+              >Sign Up</a
+            >
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Mobile Menu (Hidden by default) -->
+    <div id="mobile-menu" class="md:hidden hidden bg-gray-700">
+      <ul class="flex flex-col space-y-4 p-4">
+        <li>
+          <a
+            href="#"
+            class="text-white hover:text-orange-400 transition duration-300"
+            >Home</a
+          >
+        </li>
+        <li>
+          <a
+            href="#"
+            class="text-white hover:text-orange-400 transition duration-300"
+            >About</a
+          >
+        </li>
+        <li>
+          <a
+            href="#"
+            class="text-white hover:text-orange-400 transition duration-300"
+            >Services</a
+          >
+        </li>
+        <li>
+          <a
+            href="#"
+            class="text-white hover:text-orange-400 transition duration-300"
+            >Contact</a
+          >
+        </li>
+        <li>
+          <a
+            href="#"
+            class="bg-orange-500 text-white px-4 py-2 rounded hover:bg-orange-600 transition duration-300 text-center"
+            >Sign Up</a
+          >
+        </li>
+      </ul>
+    </div>
+
+    <!-- Header -->
+    <header class="bg-blue-600 text-white py-2 text-center">
+      <h1 class="text-4xl font-bold">Utility Tools</h1>
+      <p class="mt-2">A collection of useful tools for your daily tasks.</p>
+    </header>
+
+    <!-- Tool Cards -->
+    <div class="container mx-auto p-6">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Image to PDF Converter Card -->
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+          <img
+            src="assets/Image to PDF.webp"
+            alt="Image to PDF Converter"
+            class="w-full h-48 object-fit"
+          />
+          <div class="p-6 flex flex-col justify-center items-center">
+            <h2 class="text-xl font-bold mb-2">Image to PDF Converter</h2>
+            <p class="text-gray-600 mb-4 text-center">
+              Convert multiple images into a single PDF.
+            </p>
+            <a
+              href="image-to-pdf/image-to-pdf.html"
+              class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors"
+              >Open Tool</a
+            >
+          </div>
+        </div>
+
+        <!-- PDF to Images Converter Card -->
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+          <img
+            src="assets/PDF2img.webp"
+            alt="PDF to Images Converter"
+            class="w-full h-48 object-fit"
+          />
+          <div class="p-6 flex flex-col justify-center items-center">
+            <h2 class="text-xl font-bold mb-2">PDF to Images Converter</h2>
+            <p class="text-gray-600 mb-4 text-center">
+              Convert a PDF file into multiple images.
+            </p>
+            <a
+              href="pdf-to-images/index.html"
+              class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors"
+              >Open Tool</a
+            >
+          </div>
+        </div>
+        <!-- QR Code Generator -->
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+          <img
+            src="assets/QR Generator.webp"
+            alt="QR code generator"
+            class="w-full h-48 object-center"
+          />
+          <div class="p-6 flex flex-col justify-center items-center">
+            <h2 class="text-xl font-bold mb-2">QR Code Generator</h2>
+            <p class="text-gray-600 mb-4 text-center">
+              Generate QR code with your data.
+            </p>
+            <a
+              href="./qr-code-generator/index.html"
+              class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors"
+              >Open Tool</a
+            >
+          </div>
+        </div>
+        <!-- Image to Nagrita -->
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+          <img
+            src="assets/Nagrita.webp"
+            alt="Images to Nagrita"
+            class="w-full h-48 object-center"
+          />
+          <div class="p-6 flex flex-col justify-center items-center">
+            <h2 class="text-xl font-bold mb-2">Nagrita</h2>
+            <p class="text-gray-600 mb-4 text-center">
+              Create Nagrita in single page.
+            </p>
+            <a
+              href="./nagrita/nagrita.html"
+              class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors"
+              >Open Tool</a
+            >
+          </div>
+        </div>
+        <!-- Word Counter -->
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+          <img
+            src="assets/Word counter.webp"
+            alt="Word and character counter"
+            class="w-full h-48 object-center"
+          />
+          <div class="p-6 flex flex-col justify-center items-center">
+            <h2 class="text-xl font-bold mb-2">Word & Character Counter</h2>
+            <p class="text-gray-600 mb-4 text-center">
+              Count words and characters.
+            </p>
+            <a
+              href="./word-counter/index.html"
+              class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors"
+              >Open Tool</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <!-- Column 1: Brand Info -->
+          <div class="mb-8 md:mb-0">
+            <h3 class="text-xl font-bold mb-4">Tecsha</h3>
+            <p class="text-gray-400">
+              Building modern and responsive tools for everyone.
+            </p>
+          </div>
+
+          <!-- Column 2: Quick Links -->
+          <div class="mb-8 md:mb-0">
+            <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+            <ul class="space-y-2">
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-orange-400 transition duration-300"
+                  >Home</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-orange-400 transition duration-300"
+                  >About</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-orange-400 transition duration-300"
+                  >Services</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-orange-400 transition duration-300"
+                  >Contact</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Column 3: Social Media -->
+          <div class="mb-8 md:mb-0">
+            <h4 class="text-lg font-semibold mb-4">Follow Us</h4>
+            <div class="flex space-x-4">
+              <a
+                href="#"
+                class="text-gray-400 hover:text-orange-400 transition duration-300"
+              >
+                <i class="fab fa-facebook fa-lg"></i>
+              </a>
+              <a
+                href="#"
+                class="text-gray-400 hover:text-orange-400 transition duration-300"
+              >
+                <i class="fab fa-twitter fa-lg"></i>
+              </a>
+              <a
+                href="#"
+                class="text-gray-400 hover:text-orange-400 transition duration-300"
+              >
+                <i class="fab fa-instagram fa-lg"></i>
+              </a>
+              <a
+                href="#"
+                class="text-gray-400 hover:text-orange-400 transition duration-300"
+              >
+                <i class="fab fa-linkedin fa-lg"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Column 4: Newsletter -->
+          <div>
+            <h4 class="text-lg font-semibold mb-4">Newsletter</h4>
+            <p class="text-gray-400 mb-4">
+              Subscribe to our newsletter for the latest updates.
+            </p>
+            <form class="flex">
+              <input
+                type="email"
+                placeholder="Your email"
+                class="w-full p-2 rounded-l focus:outline-none text-gray-800"
+              />
+              <button
+                type="submit"
+                class="bg-orange-500 text-white px-4 rounded-r hover:bg-orange-600 transition duration-300"
+              >
+                Subscribe
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <!-- Bottom Footer -->
+        <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+          <p class="text-gray-400">&copy; 2025 Tecsha. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+    <!-- Font Awesome for Icons -->
+    <script
+      src="https://kit.fontawesome.com/your-fontawesome-kit.js"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

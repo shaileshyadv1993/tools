@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nagrita - Combine Images into PDF</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <!-- Sticky Navbar -->
+    <nav class="bg-gray-800 p-4 sticky top-0 z-50">
+      <div class="container mx-auto flex justify-between items-center">
+        <!-- Logo -->
+        <a href="../index.html" class="text-white text-2xl font-bold">Tecsha</a>
+
+        <!-- Hamburger Menu for Mobile -->
+        <div class="md:hidden">
+          <button id="mobile-menu-button" class="text-white focus:outline-none">
+            <svg
+              class="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16m-7 6h7"
+              ></path>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Navbar Links -->
+        <ul id="navbar-menu" class="hidden md:flex space-x-6">
+          <li>
+            <a
+              href="../index.html"
+              class="text-white hover:text-orange-400 transition duration-300"
+              >Home</a
+            >
+          </li>
+          <li>
+            <a
+              href="#"
+              class="text-white hover:text-orange-400 transition duration-300"
+              >About</a
+            >
+          </li>
+          <li>
+            <a
+              href="#"
+              class="text-white hover:text-orange-400 transition duration-300"
+              >Services</a
+            >
+          </li>
+          <li>
+            <a
+              href="#"
+              class="text-white hover:text-orange-400 transition duration-300"
+              >Contact</a
+            >
+          </li>
+          <li>
+            <a
+              href="#"
+              class="bg-orange-500 text-white px-4 py-2 rounded hover:bg-orange-600 transition duration-300"
+              >Sign Up</a
+            >
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Mobile Menu (Hidden by default) -->
+    <div id="mobile-menu" class="md:hidden hidden bg-gray-700">
+      <ul class="flex flex-col space-y-4 p-4">
+        <li>
+          <a
+            href="../index.html"
+            class="text-white hover:text-orange-400 transition duration-300"
+            >Home</a
+          >
+        </li>
+        <li>
+          <a
+            href="#"
+            class="text-white hover:text-orange-400 transition duration-300"
+            >About</a
+          >
+        </li>
+        <li>
+          <a
+            href="#"
+            class="text-white hover:text-orange-400 transition duration-300"
+            >Services</a
+          >
+        </li>
+        <li>
+          <a
+            href="#"
+            class="text-white hover:text-orange-400 transition duration-300"
+            >Contact</a
+          >
+        </li>
+        <li>
+          <a
+            href="#"
+            class="bg-orange-500 text-white px-4 py-2 rounded hover:bg-orange-600 transition duration-300 text-center"
+            >Sign Up</a
+          >
+        </li>
+      </ul>
+    </div>
+
+    <div class="bg-gray-100 flex items-center justify-center min-h-screen p-4">
+      <div class="bg-white p-8 rounded-lg shadow-lg max-w-2xl w-full">
+        <h1 class="text-3xl font-bold text-gray-800 mb-2 text-center">
+          Nagrita
+        </h1>
+        <p class="text-gray-600 mb-6 text-center">
+          Combine Front-Side and Back-Side Images into a Single PDF
+        </p>
+
+        <!-- Upload Section -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+          <!-- Front Image Upload -->
+          <div
+            id="frontDropZone"
+            class="drop-zone border-2 border-dashed border-gray-300 rounded-lg p-6 text-center cursor-pointer hover:border-blue-500"
+          >
+            <input
+              type="file"
+              id="frontFileInput"
+              class="hidden"
+              accept="image/*"
+            />
+            <span class="text-gray-600">Drag & Drop Front-Side Image</span>
+            <img
+              id="frontPreview"
+              class="mt-4 w-full h-40 object-contain hidden"
+              alt="Front Image Preview"
+            />
+          </div>
+
+          <!-- Back Image Upload -->
+          <div
+            id="backDropZone"
+            class="drop-zone border-2 border-dashed border-gray-300 rounded-lg p-6 text-center cursor-pointer hover:border-blue-500"
+          >
+            <input
+              type="file"
+              id="backFileInput"
+              class="hidden"
+              accept="image/*"
+            />
+            <span class="text-gray-600">Drag & Drop Back-Side Image</span>
+            <img
+              id="backPreview"
+              class="mt-4 w-full h-40 object-contain hidden"
+              alt="Back Image Preview"
+            />
+          </div>
+        </div>
+
+        <!-- Margin Slider -->
+        <div class="mb-6">
+          <label for="marginRange" class="block text-gray-700 mb-2"
+            >Margin Between Images:</label
+          >
+          <input
+            type="range"
+            id="marginRange"
+            min="0"
+            max="100"
+            value="20"
+            class="w-full"
+          />
+          <span id="marginValue" class="text-gray-600">20px</span>
+        </div>
+
+        <!-- Generate Button -->
+        <button
+          id="generateBtn"
+          class="w-full bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition duration-300"
+        >
+          Generate PDF
+        </button>
+
+        <!-- PDF Preview Popup -->
+        <div
+          id="pdfPopup"
+          class="flex flex-col fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center p-4"
+        >
+          <div
+            class="bg-white rounded-lg w-full max-w-5xl h-[95vh] flex flex-col"
+          >
+            <div class="p-4 border-b flex justify-between items-center">
+              <h2 class="text-xl font-bold text-gray-800">PDF Preview</h2>
+              <button
+                id="closePopup"
+                class="text-gray-600 hover:text-gray-800 text-3xl hover:text-red-500 hover:font-bold"
+              >
+                &times;
+              </button>
+            </div>
+            <iframe id="pdfPreview" class="flex-1 w-full border-none"></iframe>
+            <div class="p-4 border-t">
+              <button
+                id="downloadBtn"
+                class="w-full bg-green-500 text-white py-2 px-4 rounded-lg hover:bg-green-600 transition duration-300"
+              >
+                Download PDF
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Load jsPDF from CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="./script.js"></script>
+  </body>
+</html>

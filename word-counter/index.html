@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Word and Character Counter</title>
+    <!-- Include Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-100">
+    <!-- Sticky Navbar -->
+    <nav class="bg-gray-800 p-4 sticky top-0 z-50">
+      <div class="container mx-auto flex justify-between items-center">
+        <!-- Logo -->
+        <a href="../index.html" class="text-white text-2xl font-bold">Tecsha</a>
+
+        <!-- Hamburger Menu for Mobile -->
+        <div class="md:hidden">
+          <button id="mobile-menu-button" class="text-white focus:outline-none">
+            <svg
+              class="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16m-7 6h7"
+              ></path>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Navbar Links -->
+        <ul id="navbar-menu" class="hidden md:flex space-x-6">
+          <li>
+            <a
+              href="../index.html"
+              class="text-white hover:text-orange-400 transition duration-300"
+              >Home</a
+            >
+          </li>
+          <li>
+            <a
+              href="#"
+              class="text-white hover:text-orange-400 transition duration-300"
+              >About</a
+            >
+          </li>
+          <li>
+            <a
+              href="#"
+              class="text-white hover:text-orange-400 transition duration-300"
+              >Services</a
+            >
+          </li>
+          <li>
+            <a
+              href="#"
+              class="text-white hover:text-orange-400 transition duration-300"
+              >Contact</a
+            >
+          </li>
+          <li>
+            <a
+              href="#"
+              class="bg-orange-500 text-white px-4 py-2 rounded hover:bg-orange-600 transition duration-300"
+              >Sign Up</a
+            >
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Mobile Menu (Hidden by default) -->
+    <div id="mobile-menu" class="md:hidden hidden bg-gray-700">
+      <ul class="flex flex-col space-y-4 p-4">
+        <li>
+          <a
+            href="../index.html"
+            class="text-white hover:text-orange-400 transition duration-300"
+            >Home</a
+          >
+        </li>
+        <li>
+          <a
+            href="#"
+            class="text-white hover:text-orange-400 transition duration-300"
+            >About</a
+          >
+        </li>
+        <li>
+          <a
+            href="#"
+            class="text-white hover:text-orange-400 transition duration-300"
+            >Services</a
+          >
+        </li>
+        <li>
+          <a
+            href="#"
+            class="text-white hover:text-orange-400 transition duration-300"
+            >Contact</a
+          >
+        </li>
+        <li>
+          <a
+            href="#"
+            class="bg-orange-500 text-white px-4 py-2 rounded hover:bg-orange-600 transition duration-300 text-center"
+            >Sign Up</a
+          >
+        </li>
+      </ul>
+    </div>
+    <div class="container mx-auto p-8">
+      <h1 class="text-3xl font-bold text-center mb-8">
+        Word and Character Counter
+      </h1>
+
+      <!-- Textarea for Input -->
+      <textarea
+        id="text-input"
+        class="w-full p-4 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
+        rows="8"
+        placeholder="Type or paste your text here..."
+      ></textarea>
+
+      <!-- Clear Button -->
+      <div class="flex justify-end mt-4">
+        <button
+          id="clear-button"
+          class="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600 transition duration-300"
+        >
+          Clear Text
+        </button>
+      </div>
+
+      <!-- Counter Results -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
+        <!-- Word Count -->
+        <div class="bg-white p-6 rounded-lg shadow text-center">
+          <h3 class="text-lg font-semibold text-gray-700">Word Count</h3>
+          <p id="word-count" class="text-3xl font-bold text-blue-600 mt-2">0</p>
+        </div>
+
+        <!-- Character Count (with spaces) -->
+        <div class="bg-white p-6 rounded-lg shadow text-center">
+          <h3 class="text-lg font-semibold text-gray-700">
+            Characters (with spaces)
+          </h3>
+          <p
+            id="char-count-with-spaces"
+            class="text-3xl font-bold text-blue-600 mt-2"
+          >
+            0
+          </p>
+        </div>
+
+        <!-- Character Count (without spaces) -->
+        <div class="bg-white p-6 rounded-lg shadow text-center">
+          <h3 class="text-lg font-semibold text-gray-700">
+            Characters (without spaces)
+          </h3>
+          <p
+            id="char-count-without-spaces"
+            class="text-3xl font-bold text-blue-600 mt-2"
+          >
+            0
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- JavaScript for Counting Logic and Clear Button -->
+    <script src="./script.js"></script>
+  </body>
+</html>
