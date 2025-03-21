@@ -71,6 +71,7 @@ const pdfPopup = document.getElementById("pdfPopup");
 const pdfPreview = document.getElementById("pdfPreview");
 const downloadBtn = document.getElementById("downloadBtn");
 const closePopup = document.getElementById("closePopup");
+const nav = document.getElementById("nav-id");
 
 generateBtn.addEventListener("click", () => {
   if (!frontImage || !backImage) {
@@ -96,6 +97,7 @@ generateBtn.addEventListener("click", () => {
   pdfBlob = doc.output("blob");
   const pdfUrl = URL.createObjectURL(pdfBlob);
   pdfPreview.src = pdfUrl;
+  nav.classList.add("hidden");
   pdfPopup.classList.remove("hidden");
 });
 
@@ -114,6 +116,7 @@ downloadBtn.addEventListener("click", () => {
 // Close Popup
 closePopup.addEventListener("click", () => {
   pdfPopup.classList.add("hidden");
+  nav.classList.remove("hidden");
 });
 
 // Trigger file input when drop zone is clicked
